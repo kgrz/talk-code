@@ -3,11 +3,7 @@ const fetch = require('node-fetch');
 const compression = require('compression');
 const http = require('http');
 
-// global.fetch = fetch;
-// global.Headers = fetch.Headers;
-// global.Request = fetch.Request;
-// global.Response = fetch.Response;
-
+global.fetch = fetch;
 
 process.on('SIGINT', () => {
 	process.exit(130);
@@ -50,10 +46,7 @@ class ApiCaller {
 			})
 		})
 
-		return Promise.race([fetchPromise, timeoutPromise]).then((response) => {
-			clearTimeout(timerId);
-			return response;
-		});
+		return Promise.race([fetchPromise, timeoutPromise])
 	}
 }
 

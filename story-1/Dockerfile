@@ -17,4 +17,4 @@ ENV UV_THREADPOOL_SIZE=4
 COPY --from=build /tmp/node_modules ./node_modules
 COPY server-1.js .
 
-CMD ["node"]
+CMD ["node", "--inspect", "server-1.js"]
